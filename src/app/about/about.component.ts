@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AboutService } from 'src/services/about.service';
 
 @Component({
   selector: 'app-about',
@@ -6,29 +7,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-  info = {
-    nom: "med",
-    email: "med@gmail.Com",
-    tel: 45678789
-  }
-
-  comments = [
-    {date: new Date(), message: "A"},
-    {date: new Date(), message: "B"},
-    {date: new Date(), message: "C"}
-  ];
-
+  infos:{
+    nom:string,
+    email:string,
+    tel:number
+  };
+  comments = [];
+  
   commentaire={date:null, message:""};
 
-  constructor() { }
+  constructor(private aboutService: AboutService) {
+    this.infos = this.aboutService.getInfo(); // recupère les infos au démarrage de l'appli
+    this.comments = this.aboutService.getAllComments(); // recupère le tableau des comments au démarrage de l'appli
+   }
 
   ngOnInit() {
   }
   // Méthode d'ajout d'un commentaire au clic sur bouton
   onAddCommentaire(commentaire) {
-    commentaire.date = new Date();
-    this.comments.push(commentaire); /* recuperer le commentaire saisie et l'ajoute automatiquement dans le tableau des commentaires (comments)*/
+    this.aboutService.addComment(commentaire);
+    //this.comments.push(commentaire); /* recuperer le commentaire saisie et l'ajoute automatiquement dans le tableau des commentaires (comments)*/
     this.commentaire.message = ""; // Permet de vider les champs après ajout du commentaire
+    this.comments = this.aboutService.getAllComments(); // Charge la liste
                                            
   }
 

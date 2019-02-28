@@ -1,0 +1,35 @@
+<p></p>
+<div class="container">
+  <div class="card">
+    <div class="card-header bg-primary text-white">Gallery</div>
+    <div class="card-body">
+      <form #f="ngForm" (ngSubmit)="onSearch(f.value)">
+        <div class="form-group">
+          <label>Mot Clé:</label>&nbsp;
+          <input type="text" name="motCle" ngModel required>&nbsp;
+          <button type="submit" class="btn btn-primary">Chercher</button>
+        </div>
+      </form>
+      <!-- Afficher la boucle ngFor que si pagePhoto est défini -->
+      <!-- <div *ngIf="pagePhotos">  -->
+        <div class="row">
+        <div class="col-3" *ngFor="let photo of pagePhotos?.hits">
+          <div class="card cadre">
+          <div class="card-header bg-primary text-white">
+            <img class="rounded-circle" src="{{photo.userImageURL}}" width="50" height="50">
+            
+          </div>
+          <div class="card-body">
+            <div>
+              <!-- <p>User : {{photo.user}}</p>
+              <p>Tags : {{photo.tags}}</p> -->
+            </div>
+            <img src="{{photo.previewURL}}">
+          </div>
+        </div>&nbsp;
+        </div>
+      </div>
+      <!-- </div> -->
+    </div>
+  </div> 
+</div>

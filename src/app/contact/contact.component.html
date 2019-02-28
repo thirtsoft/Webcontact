@@ -1,3 +1,38 @@
-<p>
-  contact works!
-</p>
+<p></p>
+<p></p>
+<div class="container">
+  <div class="card">
+      <div class="card-header bg-primary text-white">Liste des Contacts</div>
+      <div class="card-body">
+        <div>
+           <form #f="ngForm">
+              <div class="form-group">
+                <label>Mot Clé:</label>&nbsp;
+                <input type="text" name="motCle" ngModel required>&nbsp;
+                <button type="submit" class="btn btn-primary">Chercher</button>
+              </div>
+            </form>
+            <div class="btn-group btn-group-sm float-right">
+                <button class="btn btn-primary" [routerLink]="['/contact-update']">
+                  <span>Create a new Contact</span>
+                </button>&nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-info">&nbsp;
+                  <span> Back</span>
+                </button>
+            </div>
+          </div><br/>
+            <br/>
+              <table class="table table-striped">
+                <tr>
+                    <th>ID</th><th>Nom</th><th>Prénom</th><th>Email</th>
+                </tr> 
+                <tr *ngFor="let contact of pageContacts?.content">
+                  <td>{{contact.id}}</td>
+                  <td>{{contact.nom}}</td>
+                  <td>{{contact.prenom}}</td>
+                  <td>{{contact.email}}</td>
+                </tr> 
+            </table>
+      </div>
+  </div>
+</div>

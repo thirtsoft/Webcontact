@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AboutService {
     info = {
-        nom: "med",
-        email: "med@gmail.Com",
-        tel: 45678789
+        nom: "tairou",
+        email: "thirdiallo@gmail.Com",
+        tel: 779440310
       }
     
       comments = [

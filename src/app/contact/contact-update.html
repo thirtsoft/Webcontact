@@ -1,85 +1,84 @@
 <p></p>
 <div class="container">
-    <div class="card">
+    <div class="card" *ngIf="mode==1">
        <div class="card-header bg-primary text-white">Ajout Contacts</div>
         <div class="card-body">
-                <div class="col-8">
-                    <form name="editForm" role="form"  #editForm="ngForm">
-                        <h2>
-                            Create or edit a User</h2>
-                        <div>
-            
-                            <div class="form-group">
-                                <label>ID</label>
-                                <input type="text" class="form-control" name="id">
-                            </div>
-                            
-                            <div class="form-group">
-                            <label class="form-control-label">First Name</label>
-                                <input type="text" class="form-control" name="firstName">
-                                <div *ngIf="">
-                                    <small class="form-text text-danger" *ngIf="">
-                                            This field is required.
-                                    </small>
-                                    <small class="form-text text-danger" *ngIf="">
-                                                This field cannot be longer than 50 characters.
-                                    </small>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Last Name</label>
-                                    <input type="text" class="form-control" name="lastName">
-                                <div *ngIf="">
-                                    <small class="form-text text-danger"
-                                        *ngIf="">
-                                            This field is required.
-                                    </small>
-                                    <small class="form-text text-danger"
-                                    *ngIf="">
-                                            This field cannot be longer than 50 characters.
-                                    </small>
-                                </div>
-                            </div> 
-                            <div class="form-group">
-                                <label>Adresse</label>
-                                    <input type="text" class="form-control" name="adresse">
-                                <div *ngIf="">
-                                    <small class="form-text text-danger"
-                                        *ngIf="">
-                                            This field is required.
-                                    </small>
-                                    <small class="form-text text-danger"
-                                        *ngIf="">
-                                            This field cannot be longer than 50 characters.
-                                    </small>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                            <label>Telephone</label>
-                                <input type="text" class="form-control" name="telephone">
-                                <div *ngIf="">
-                                    <small class="form-text text-danger"
-                                        *ngIf="">
-                                            This field is required.
-                                    </small>
-                                    <small class="form-text text-danger"
-                                        *ngIf="">
-                                            This field cannot be longer than 50 characters.
-                                    </small>
-                                </div>
-                            </div>
-                        </div>  
-                    </form>
-                    <div class="btn-group btn-group-lg float-right">
-                        <button type="submit" class="btn btn-success">&nbsp;
-                            <span>Save</span>
-                        </button>&nbsp;
-                        <button type="button" class="btn btn-secondary" [routerLink]="['/contacts']">
-                            <span>Cancel</span>&nbsp;
-                        </button>    
-                    </div>
+            <div>
+                <div>
+                    <h3>Create or edit a User</h3>
+                </div> 
+               <!--  <div class="form-group">
+                    <label>ID</label>
+                    <input type="text" class="form-control" name="id">
+                </div>   -->      
+                <div class="form-group">
+                    <label class="form-control-label">Last Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="contact.nom">
+                </div>
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="contact.prenom">
+                </div> 
+                <div class="form-group">
+                    <label>Mail Address</label>
+                    <input type="text" class="form-control" [(ngModel)]="contact.email">
+                </div>
+                <div class="form-group">
+                    <label>Date Naissance</label>
+                    <input type="date" class="form-control" [(ngModel)]="contact.dateNaissance">
+                </div> 
+                <div class="form-group">
+                    <label>Telephone</label>
+                    <input type="text" class="form-control" [(ngModel)]="contact.tel">
+                </div>
+                <div class="btn-group btn-group-lg float-right">
+                    <button (click)="saveContact()" class="btn btn-success">&nbsp;
+                        <span>Save</span>
+                    </button>&nbsp;
+                    <button type="button" class="btn btn-secondary" [routerLink]="['/contacts']">
+                        <span>Cancel</span>&nbsp;
+                    </button>    
+                </div>
             </div>
         </div>
     </div>
+
+
+    <div class="card" *ngIf="mode==2">
+        <div class="card-header bg-primary text-white">Confirmation Ajout</div>
+         <div class="card-body">
+             <div> 
+                <div class="form-group">
+                    <label>ID :</label>&nbsp;
+                    <label>{{contact.id}}</label>
+                </div>      
+                 <div class="form-group">
+                     <label>Last Name :</label>&nbsp;
+                     <label>{{contact.nom}}</label>
+                 </div>
+                 <div class="form-group">
+                     <label>First Name :</label>&nbsp;
+                     <label>{{contact.prenom}}</label>
+                 </div> 
+                 <div class="form-group">
+                     <label>Mail Address :</label>&nbsp;
+                     <label>{{contact.email}}</label>
+                 </div>
+                 <div class="form-group">
+                     <label>Date Naissance :</label>&nbsp;
+                     <label>{{contact.dateNaissance}}</label>
+                 </div> 
+                 <div class="form-group">
+                     <label>Telephone :</label>&nbsp;
+                     <label>{{contact.tel}}</label>
+                 </div>
+                 <div class="btn btn-lg float-right">
+                     <button class="btn btn-primary" (click)="mode=1">&nbsp;
+                         <span>Nouveau Contact</span>
+                     </button>&nbsp;   
+                 </div>
+             </div>
+         </div>
+     </div>
 </div>
     

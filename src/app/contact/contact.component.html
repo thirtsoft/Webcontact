@@ -5,13 +5,11 @@
       <div class="card-header bg-primary text-white">Liste des Contacts</div>
       <div class="card-body">
         <div>
-           <form #f="ngForm">
-              <div class="form-group">
+            <div class="form-group">
                 <label>Mot Clé:</label>&nbsp;
-                <input type="text" name="motCle" ngModel required>&nbsp;
-                <button type="submit" class="btn btn-primary">Chercher</button>
+                <input type="text" [(ngModel)]="motCle"/>&nbsp;
+                <button (click)="chercher()" class="btn btn-primary">Chercher</button>
               </div>
-            </form>
             <div class="btn-group btn-group-sm float-right">
                 <button class="btn btn-primary" [routerLink]="['/contact-update']">
                   <span>Create a new Contact</span>
